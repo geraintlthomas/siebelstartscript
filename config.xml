@@ -1,0 +1,68 @@
+<!-- The config file should reside in the same location where the .ps1 file will be placed -->
+<!-- All the values should be entered correctly -->
+<!-- replace $drive:\Siebel?? with the correct value -->
+<!-- Sleepinterval - number of seconds the script will wait to recheck whether the respective process has started, the current values are recommended -->
+
+<?xml version="1.0"?>
+<configuration>
+    <settings>
+        <!-- GATEWAY details - one or more servers can be added -->
+        <gwServers>
+            <server>
+                <!-- gwServerName is the FQDN of the server -->
+                <add key="gwServerName" value="fqdn of gateway server 1" />
+                <add key="gwServiceName" value="name of gateway server service, for example: gtwyns" />
+                <add key="gwJavaExeLocation" value="$drive:\Siebel??\ses\jre\bin\java.exe" />
+                <add key="gwProcessExeName" value="java.exe" />
+                <add key="gwReadinessCheckSleepInterval" value="10" />
+            </server>
+        </gwServers>
+        <!-- Siebel SERVER or SES details - one or more servers can be added -->
+        <siebelServers>
+            <server>
+                <!-- siebServerName is the FQDN of the server -->
+                <add key="siebServerName" value="fqdn of Siebel server 1" />
+                <!-- When Siebel server service name not specified it will just start the SES instance -->
+                <add key="siebServiceName" value="name of Siebel server service, for example: siebsrvr_SE_SIEB_AWS" />
+                <add key="sesStartupBatLoc" value="$drive:\Siebel??\ses\applicationcontainer\bin\startup.bat" />
+                <add key="sesShutdownBatLoc" value="$drive:\Siebel??\ses\applicationcontainer\bin\shutdown.bat" />
+                <add key="sesJavawExeLocation" value="$drive:\Siebel??\ses\jre\bin\javaw.exe" />
+                <add key="sesProcessExeName" value="javaw.exe" />
+                <add key="sesProcessCheckSleepInterval" value="30" />
+                <add key="sesProcessCheckMaxRetry" value="5" />
+                <add key="srvrReadinessCheckSleepInterval" value="10" />
+                <!-- SES Tomcat Instance -->
+                <add key="sesTomcatURI" value="https://<fqdn>:<sesPort>/" />
+            </server>
+            <server>
+                <!-- siebServerName is the FQDN of the server -->
+                <add key="siebServerName" value="fqdn of SES server" />
+                <!-- When Siebel server service name not specified it will just start the SES instance -->
+                <!--<add key="siebServiceName" value="not required" /> -->
+                <add key="sesStartupBatLoc" value="$drive:\Siebel??\ses\applicationcontainer\bin\startup.bat" />
+                <add key="sesShutdownBatLoc" value="$drive:\Siebel??\ses\applicationcontainer\bin\shutdown.bat" />
+                <add key="sesJavawExeLocation" value="$drive:\Siebel??\ses\jre\bin\javaw.exe" />
+                <add key="sesProcessExeName" value="javaw.exe" />
+                <add key="sesProcessCheckSleepInterval" value="30" />
+                <add key="sesProcessCheckMaxRetry" value="5" />
+                <add key="srvrReadinessCheckSleepInterval" value="10" />
+                <!-- SES Tomcat Instance -->
+                <add key="sesTomcatURI" value="https://<fqdn>:<sesPort>/" />
+            </server>
+        </siebelServers>
+        <!-- AI details - one or more servers can be added -->
+        <aiServers>
+            <server>
+                <add key="aiServerName" value="fqdn of AI server" />
+                <add key="aiJavawExeLocation" value="$drive:\Siebel??\AI\jre\bin\javaw.exe" />
+                <add key="aiStartupBatLoc" value="$drive:\Siebel??\AI\applicationcontainer\bin\startup.bat" />
+                <add key="aiShutdownBatLoc" value="$drive:\Siebel??\AI\applicationcontainer\bin\shutdown.bat" />
+                <add key="aiProcessExeName" value="javaw.exe" />
+                <add key="aiProcessCheckSleepInterval" value="30" />
+                <add key="aiProcessCheckMaxRetry" value="10" />
+                <!-- AI Tomcat Instance -->
+                <add key="aiTomcatURI" value="https://<fqdn>:<aiPort>/" />
+            </server>
+        </aiServers>
+    </settings>
+</configuration>
